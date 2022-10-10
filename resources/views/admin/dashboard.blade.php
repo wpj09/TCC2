@@ -1,3 +1,6 @@
+@extends('admin.master.master')
+
+@section('content')
 <div style="flex-basis: 100%;">
     <section class="dash_content_app">
         <header class="dash_content_app_header">
@@ -105,7 +108,8 @@
                                 </div>
                                 <div class="realty_list_item_card_content">
                                     <span class="realty_list_item_description_title">Domitórios:</span>
-                                    <span class="realty_list_item_description_content">2 Quartos<br><span>Sendo 1 suítes</span></span>
+                                    <span
+                                        class="realty_list_item_description_content">2 Quartos<br><span>Sendo 1 suítes</span></span>
                                 </div>
                             </div>
 
@@ -115,7 +119,8 @@
                                 </div>
                                 <div class="realty_list_item_card_content">
                                     <span class="realty_list_item_description_title">Garagem:</span>
-                                    <span class="realty_list_item_description_content">2 Vagas<br><span>Sendo 1 cobertas</span></span>
+                                    <span
+                                        class="realty_list_item_description_content">2 Vagas<br><span>Sendo 1 cobertas</span></span>
                                 </div>
                             </div>
 
@@ -136,3 +141,4 @@
         </div>
     </section>
 </div>
+@endsection

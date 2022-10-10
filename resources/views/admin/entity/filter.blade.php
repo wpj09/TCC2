@@ -1,3 +1,6 @@
+@extends('admin.master.master')
+
+@section('content')
 <div class="dash_content_search">
 
     <div class="dash_content_search_close">
@@ -7,7 +10,7 @@
     </div>
 
     <header>
-        <h3 class="icon-search">Pesquisar por Cliente:</h3>
+        <h3 class="icon-search">Pesquisar por Empresa:</h3>
     </header>
 
     <main>
@@ -55,3 +58,4 @@
         </form>
     </main>
 </div>
+@endsection

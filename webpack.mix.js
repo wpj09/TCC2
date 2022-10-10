@@ -12,7 +12,7 @@ const mix = require('laravel-mix');
  */
 
 mix
-    // Assets Admin
+    // Assets admin
     .sass('resources/views/admin/assets/scss/reset.scss', 'public/backend/assets/css/reset.css')
     .sass('resources/views/admin/assets/scss/boot.scss', 'public/backend/assets/css/boot.css')
     .sass('resources/views/admin/assets/scss/login.scss', 'public/backend/assets/css/login.css')
