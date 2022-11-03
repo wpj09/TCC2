@@ -45,21 +45,19 @@
             <li class="dash_sidebar_nav_item"><a class="icon-users" href="dashboard.php?app=users/index">Clientes</a>
                 <ul class="dash_sidebar_nav_submenu">
                     <li class=""><a href="dashboard.php?app=users/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=companies/index">Empresas</a></li>
                     <li class=""><a href="dashboard.php?app=users/team">Time</a></li>
                     <li class=""><a href="dashboard.php?app=users/create">Criar Novo</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-home" href="dashboard.php?app=properties/index">Imóveis</a>
+            <li class="dash_sidebar_nav_item"><a class="icon-balance-scale" href="dashboard.php?app=properties/index">Entidade</a>
                 <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=properties/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=properties/create">Criar Novo</a></li>
+                    <li class=""><a href="dashboard.php?app=users/index">Ver Todos</a></li>
+                    <li class=""><a href="dashboard.php?app=users/create">Criar Novo</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-file-text" href="dashboard.php?app=contracts/index">Contratos</a>
+            <li class="dash_sidebar_nav_item"><a class="icon-bug" href="dashboard.php?app=contracts/index">Problemas</a>
                 <ul class="dash_sidebar_nav_submenu">
                     <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=contracts/create">Criar Novo</a></li>
                 </ul>
             </li>
             <li class="dash_sidebar_nav_item"><a class="icon-reply" href="">Ver Site</a></li>
