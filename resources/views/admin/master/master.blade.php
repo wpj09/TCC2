@@ -60,7 +60,6 @@
                     <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-reply" href="">Ver Site</a></li>
             <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="" target="_blank">Sair</a></li>
         </ul>
 
@@ -71,9 +70,9 @@
         <div class="dash_userbar">
             <div class="dash_userbar_box">
                 <div class="dash_userbar_box_content">
-                    <span class="icon-align-justify icon-notext mobile_menu transition btn btn-green"></span>
+                    <span class="icon-align-justify icon-notext mobile_menu transition btn btn-orange"></span>
                     <h1 class="transition">
-                        <i class="icon-imob text-orange"></i><a href="">Up<b>Admin</b></a>
+                        <i class="icon-clipboard text-green"></i><a href="">Up<b>Admin</b></a>
                     </h1>
                     <div class="dash_userbar_box_bar no_mobile">
                         <a class="text-red icon-sign-out" href="">Sair</a>

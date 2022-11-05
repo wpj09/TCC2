@@ -4,14 +4,14 @@
     <section class="dash_content_app">
 
         <header class="dash_content_app_header">
-        <h2 class="icon-bug">Problemas</h2>
+            <h2 class="icon-bug">Problemas</h2>
 
             <div class="dash_content_app_header_actions">
                 <nav class="dash_content_app_breadcrumb">
                     <ul>
                         <li><a href="">Dashboard</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="" class="text-orange">Problemas</a></li>
+                        <li><a href="" class="text-green">Problemas</a></li>
                     </ul>
                 </nav>
             </div>
@@ -22,7 +22,9 @@
                 <div class="realty_list">
                     <div class="realty_list_item mt-1 mb-1">
                         <div class="realty_list_item_actions_stats">
-                            <img src="https://img.freepik.com/vetores-premium/ponteiro-de-direcao-vermelho-no-mapa-da-cidade-dobrado_176411-938.jpg?w=2000" alt="">
+                            <img
+                                src="https://img.freepik.com/vetores-premium/ponteiro-de-direcao-vermelho-no-mapa-da-cidade-dobrado_176411-938.jpg?w=2000"
+                                alt="">
                         </div>
 
                         <div class="realty_list_item_content">
@@ -85,7 +87,9 @@
                 <div class="realty_list">
                     <div class="realty_list_item mt-1 mb-1">
                         <div class="realty_list_item_actions_stats">
-                            <img src="https://img.freepik.com/vetores-premium/ponteiro-de-direcao-vermelho-no-mapa-da-cidade-dobrado_176411-938.jpg?w=2000" alt="">
+                            <img
+                                src="https://img.freepik.com/vetores-premium/ponteiro-de-direcao-vermelho-no-mapa-da-cidade-dobrado_176411-938.jpg?w=2000"
+                                alt="">
                         </div>
 
                         <div class="realty_list_item_content">

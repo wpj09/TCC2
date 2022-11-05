@@ -38,7 +38,7 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><a href="#" class="text-orange">Robson V. Leite</a></td>
+                            <td><a href="#" class="text-green">Robson V. Leite</a></td>
                             <td>Endereço</td>
                             <td>Setor</td>
                             <td>Cidade</td>

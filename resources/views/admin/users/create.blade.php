@@ -13,7 +13,7 @@
                         <li class="separator icon-angle-right icon-notext"></li>
                         <li><a href="">Clientes</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="" class="text-orange">Novo Cliente</a></li>
+                        <li><a href="" class="text-green">Novo Cliente</a></li>
                     </ul>
                 </nav>
             </div>
