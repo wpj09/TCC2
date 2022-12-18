@@ -11,13 +11,12 @@
                     <ul>
                         <li><a href="">Dashboard</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="">Entidades</a></li>
+                        <li><a href="" class="text-green">Entidades</a></li>
                     </ul>
                 </nav>
 
                 <a href="dashboard.php?app=companies/create" class="btn btn-green icon-building-o ml-1">Criar
-                    Empresa</a>
-                <button class="btn btn-green icon-search icon-notext ml-1 search_open"></button>
+                    Entidade</a>
             </div>
         </header>
 
@@ -27,19 +26,17 @@
                     <thead>
                     <tr>
                         <th>Razão Social</th>
-                        <th>Nome Fantasia</th>
                         <th>CNPJ</th>
+                        <th>Endereço</th>
                         <th>IE</th>
-                        <th>Responsável</th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
                         <td><a href="" class="text-green">UpInside Treinamentos LTDA</a></td>
-                        <td>UpInside Treinamentos</td>
                         <td>12.345.678/0001-00</td>
+                        <td>Rua central, lote entral</td>
                         <td>123123</td>
-                        <td><a href="" class="text-green">Robson V. Leite</a></td>
                     </tr>
                     </tbody>
                 </table>

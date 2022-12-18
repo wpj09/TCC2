@@ -37,7 +37,7 @@
                                 </label>
 
                                 <label class="label">
-                                    <input type="checkbox" name="client"><span>Cliente</span>
+                                    <input type="checkbox" name="collaborate"><span>Colaborador</span>
                                 </label>
                             </div>
 

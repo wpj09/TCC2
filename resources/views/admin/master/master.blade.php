@@ -15,7 +15,7 @@
         @yield('css')
     @endif
 
-    <title>Prefeitura - Site Control</title>
+    <title>Prefeitura de {{ env('NAME_MUNICIPIO') }} - Site Control</title>
 </head>
 <body>
 
@@ -70,9 +70,9 @@
         <div class="dash_userbar">
             <div class="dash_userbar_box">
                 <div class="dash_userbar_box_content">
-                    <span class="icon-align-justify icon-notext mobile_menu transition btn btn-orange"></span>
+                    <span class="icon-align-justify icon-notext mobile_menu transition btn btn-blue"></span>
                     <h1 class="transition">
-                        <i class="icon-clipboard text-green"></i><a href="">Up<b>Admin</b></a>
+                        <i class="icon-clipboard text-green"></i><a href="">{{ env('name_municipio') }}<b>Admin</b></a>
                     </h1>
                     <div class="dash_userbar_box_bar no_mobile">
                         <a class="text-red icon-sign-out" href="">Sair</a>
