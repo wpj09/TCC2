@@ -54,4 +54,24 @@ class AuthController extends Controller
         Auth::logout();
         return redirect()->route('admin.login');
     }
+
+    private function isAdmin()
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+
+        if ($user->admin === 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function authenticated(string $ip)
+    {
+        $user = User::where('id', Auth::user()->id);
+        $user->update([
+            'last_login_at' => date('Y-m-d H:i:s'),
+            'last_login_ip' => $ip
+        ]);
+    }
 }
