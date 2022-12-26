@@ -13,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.dashboard');
+Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function () {
+
+    /** Formulário de Login */
+    Route::get('/', 'AuthController@showLoginForm')->name('login');
+    Route::post('login', 'AuthController@login')->name('login.do');
+
+    /** Formulário de logout */
+    Route::get('logout', 'AuthController@logout')->name('logout');
+
 });
