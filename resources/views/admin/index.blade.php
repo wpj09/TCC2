@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/reset.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/boot.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('backend/assets/css/login.css') }}"/>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png"/>
+    <link rel="stylesheet" href="{{ url(mix('backend/assets/css/reset.css')) }}"/>
+    <link rel="stylesheet" href="{{ url(mix('backend/assets/css/boot.css')) }}"/>
+    <link rel="stylesheet" href="{{ url(mix('backend/assets/css/login.css')) }}"/>
+    <link rel="icon" type="image/png" href="backend/assets/images/favicon.png"/>
 
-    <title>UpAdmin - Site Control</title>
+    <title>{{ env('name_municipio') }} - Site Control</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 
@@ -23,10 +24,12 @@
                 <h1>Login</h1>
             </header>
 
-            <form name="login" action="" method="post" autocomplete="off">
+            <form name="login" action="{{ route('admin.login.do') }}" method="post" autocomplete="off">
+                @csrf
+
                 <label>
                     <span class="field icon-envelope">E-mail:</span>
-                    <input type="email" name="email" placeholder="Informe seu e-mail" required/>
+                    <input type="email" name="email" placeholder="Informe seu e-mail" value="wpjwpj09@gmail.com" required/>
                 </label>
 
                 <label>
@@ -54,7 +57,8 @@
 
 </div>
 
-<script src="{{ asset('backend/assets/js/jquery.min.js') }}"></script>
+<script src="{{ url(mix('backend/assets/js/jquery.js')) }}"></script>
+<script src="{{ url(mix('backend/assets/js/login.js')) }}"></script>
 
 </body>
 </html>

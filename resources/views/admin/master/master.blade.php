@@ -15,6 +15,7 @@
         @yield('css')
     @endif
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Prefeitura de {{ env('NAME_MUNICIPIO') }} - Site Control</title>
 </head>
 <body>
