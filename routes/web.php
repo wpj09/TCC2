@@ -16,8 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], function (){
 
+    /** Formulário de Login*/
     Route::get('/', [AuthController::class, 'showLoginForm'])->name('login');
     Route::post('login', [AuthController::class, 'login'])->name('login.do');
 
-    Route::get('home', [AuthController::class, 'home'])->name('home');
+    /** Rotas Protegidas*/
+    Route::group(['middleware' => ['auth']], function (){
+
+        /** Dashboar Home*/
+        Route::get('home', [AuthController::class, 'home'])->name('home');
+    });
+
+    /** Logout*/
+    Route::get('logout', [AuthController::class, 'logout'])->name('logout');
 });

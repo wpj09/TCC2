@@ -61,7 +61,7 @@
                     <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="" target="_blank">Sair</a></li>
+            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="{{ route('admin.logout') }}">Sair</a></li>
         </ul>
 
     </aside>
@@ -76,7 +76,7 @@
                         <i class="icon-clipboard text-green"></i><a href="">{{ env('name_municipio') }}<b>Admin</b></a>
                     </h1>
                     <div class="dash_userbar_box_bar no_mobile">
-                        <a class="text-red icon-sign-out" href="">Sair</a>
+                        <a class="text-red icon-sign-out" href="{{ route('admin.logout') }}">Sair</a>
                     </div>
                 </div>
             </div>
