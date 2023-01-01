@@ -61,7 +61,8 @@
                     <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile" href="{{ route('admin.logout') }}">Sair</a></li>
+            <li class="dash_sidebar_nav_item"><a class="icon-sign-out on_mobile"
+                                                 href="{{ route('admin.logout') }}">Sair</a></li>
         </ul>
 
     </aside>

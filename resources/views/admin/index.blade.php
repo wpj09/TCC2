@@ -29,7 +29,7 @@
 
                 <label>
                     <span class="field icon-envelope">E-mail:</span>
-                    <input type="email" name="email" placeholder="Informe seu e-mail" value="wpjwpj09@gmail.com" required/>
+                    <input type="email" name="email" placeholder="Informe seu e-mail" required/>
                 </label>
 
                 <label>
