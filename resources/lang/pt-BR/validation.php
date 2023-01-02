@@ -162,7 +162,7 @@ return [
         'description' => 'descrição',
         'excerpt' => 'resumo',
         'first_name' => 'primeiro nome',
-        'gender' => 'gênero',
+        'genre' => 'gênero',
         'hour' => 'hora',
         'last_name' => 'sobrenome',
         'message' => 'mensagem',
@@ -199,6 +199,7 @@ return [
         'zipcode' => 'CEP',
         'street' => 'rua/logradouro',
         'number' => 'numero',
+        'complement' => 'complemento',
         'neighborhood ' => 'bairro',
 
         // Contact
