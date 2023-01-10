@@ -45,11 +45,11 @@
                             <div class="label_gc">
                                 <span class="legend">Perfil:</span>
                                 <label class="label">
-                                    <input type="radio" name="purpose" {{ (old('purpose') == 'admin' ? 'checked' : '') }}><span>Administrativo</span>
+                                    <input type="radio" name="purpose" value="admin" {{ (old('purpose') == 'admin' ? 'checked' : '') }}><span>Administrativo</span>
                                 </label>
 
                                 <label class="label">
-                                    <input type="radio" name="purpose" {{ (old('purpose') == 'collaborate' ? 'checked' : '') }}><span>Colaborador</span>
+                                    <input type="radio" name="purpose" value="collaborate" {{ (old('purpose') == 'collaborate' ? 'checked' : '') }}><span>Colaborador</span>
                                 </label>
                             </div>
 
