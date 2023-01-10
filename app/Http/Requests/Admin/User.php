@@ -25,6 +25,7 @@ class User extends FormRequest
     public function rules()
     {
         return [
+            'purpose' => 'required',
             'name' => 'required|min:3|max:191',
             'genre' => 'required|in:male,female,other',
             'document' => (!empty($this->request->all()['id']) ? 'required|min:11|max:11|unique:users,document,' . $this->request->all()['id'] : 'required|min:11|max:11|unique:users,document'),

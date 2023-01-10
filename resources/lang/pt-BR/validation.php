@@ -242,6 +242,7 @@ return [
         'neighborhood' => 'bairro',
         'area_total' => 'área total',
         'area_util' => 'área útil',
+        'purpose' => 'perfil'
     ],
 
 ];
