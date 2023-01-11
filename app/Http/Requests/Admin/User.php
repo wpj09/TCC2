@@ -17,6 +17,17 @@ class User extends FormRequest
         return Auth::check();
     }
 
+    public function all($keys = null)
+    {
+        return $this->validateFields(parent::all());
+    }
+
+    public function validateFields(array $inputs)
+    {
+        $inputs['document'] = str_replace(['.', '-'], '', $this->request->all()['document']);
+        return $inputs;
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

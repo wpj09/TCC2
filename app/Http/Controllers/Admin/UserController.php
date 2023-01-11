@@ -16,12 +16,22 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index');
+        $users = User::all();
+        return view('admin.users.index', [
+            'users' => $users
+        ]);
     }
 
     public function team()
     {
-        return view('admin.users.team');
+        $users = User::where(function ($query) {
+            $query->where('purpose', '=', 'admin')
+                ->orWhere('purpose', '=', 'collaborate');
+        })->get();
+
+        return view('admin.users.team', [
+            'users' => $users
+        ]);
     }
 
     /**
@@ -43,8 +53,11 @@ class UserController extends Controller
     public function store(UserRequest $request)
     {
         $userCreate = User::create($request->all());
+        $userCreate->save();
 
-        var_dump($userCreate);
+        return redirect()->route('admin.users.edit', [
+            'users' => $userCreate->id
+        ]);
     }
 
     /**
@@ -66,7 +79,11 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::where('id', $id)->first();
+
+        return view('admin.users.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -78,7 +95,19 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
-        //
+        $user = User::where('id', $id)->first();
+        $user->fill($request->all());
+
+        if (!$user->save()) {
+            return redirect()->route('admin.users.edit', [
+                'users' => $user->id
+            ]);
+        }
+
+        return view('admin.users.edit', [
+            'users' => $user->id,
+            'user' => $user
+        ]);
     }
 
     /**
