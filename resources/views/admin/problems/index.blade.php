@@ -23,41 +23,20 @@
                     <div class="realty_list_item mt-1 mb-1">
                         <div class="realty_list_item_actions_stats">
                             <img
-                                src="https://img.freepik.com/vetores-premium/ponteiro-de-direcao-vermelho-no-mapa-da-cidade-dobrado_176411-938.jpg?w=2000"
+                                src="{{ url(asset('backend/assets/images/agua.jpg')) }}"
                                 alt="">
                         </div>
 
                         <div class="realty_list_item_content">
-                            <h4>#1 - Descrção do Problema</h4>
+                            <h4>#1 - Vazamento de água</h4>
 
                             <div class="realty_list_item_card">
                                 <div class="realty_list_item_card_image">
                                     <span class="icon-realty-location"></span>
-                                </div>
-                                <div class="realty_list_item_card_content">
-                                    <span class="realty_list_item_description_title">Rua:</span>
-                                    <span class="realty_list_item_description_content">rua</span>
-                                    <span class="realty_list_item_description_content">complemento</span>
-                                </div>
-                            </div>
-
-                            <div class="realty_list_item_card">
-                                <div class="realty_list_item_card_image">
-                                    <span class="icon-realty-location"></span>
-                                </div>
-                                <div class="realty_list_item_card_content">
-                                    <span class="realty_list_item_description_title">Bairro:</span>
-                                    <span class="realty_list_item_description_content">bairro</span>
-                                </div>
-                            </div>
-
-                            <div class="realty_list_item_card">
-                                <div class="realty_list_item_card_image">
-                                    <span class="icon-binoculars"></span>
                                 </div>
                                 <div class="realty_list_item_card_content">
                                     <span class="realty_list_item_description_title">Status:</span>
-                                    <span class="realty_list_item_description_content">status</span>
+                                    <span class="realty_list_item_description_content">Aberto</span>
                                 </div>
                             </div>
 
@@ -67,7 +46,7 @@
                                 </div>
                                 <div class="realty_list_item_card_content">
                                     <span class="realty_list_item_description_title">Entidade:</span>
-                                    <span class="realty_list_item_description_content">entidade</span>
+                                    <span class="realty_list_item_description_content">SANEAGO</span>
                                 </div>
                             </div>
 
@@ -88,41 +67,20 @@
                     <div class="realty_list_item mt-1 mb-1">
                         <div class="realty_list_item_actions_stats">
                             <img
-                                src="https://img.freepik.com/vetores-premium/ponteiro-de-direcao-vermelho-no-mapa-da-cidade-dobrado_176411-938.jpg?w=2000"
+                                src="{{ url(asset('backend/assets/images/buraco.jpeg')) }}"
                                 alt="">
                         </div>
 
                         <div class="realty_list_item_content">
-                            <h4>#1 - Descrção do Problema</h4>
+                            <h4>#2 - Buracos na rua</h4>
 
                             <div class="realty_list_item_card">
                                 <div class="realty_list_item_card_image">
                                     <span class="icon-realty-location"></span>
-                                </div>
-                                <div class="realty_list_item_card_content">
-                                    <span class="realty_list_item_description_title">Rua:</span>
-                                    <span class="realty_list_item_description_content">rua</span>
-                                    <span class="realty_list_item_description_content">complemento</span>
-                                </div>
-                            </div>
-
-                            <div class="realty_list_item_card">
-                                <div class="realty_list_item_card_image">
-                                    <span class="icon-realty-location"></span>
-                                </div>
-                                <div class="realty_list_item_card_content">
-                                    <span class="realty_list_item_description_title">Bairro:</span>
-                                    <span class="realty_list_item_description_content">bairro</span>
-                                </div>
-                            </div>
-
-                            <div class="realty_list_item_card">
-                                <div class="realty_list_item_card_image">
-                                    <span class="icon-binoculars"></span>
                                 </div>
                                 <div class="realty_list_item_card_content">
                                     <span class="realty_list_item_description_title">Status:</span>
-                                    <span class="realty_list_item_description_content">status</span>
+                                    <span class="realty_list_item_description_content">Aberto</span>
                                 </div>
                             </div>
 
@@ -132,7 +90,7 @@
                                 </div>
                                 <div class="realty_list_item_card_content">
                                     <span class="realty_list_item_description_title">Entidade:</span>
-                                    <span class="realty_list_item_description_content">entidade</span>
+                                    <span class="realty_list_item_description_content">PREFEITURA MUNICIPAL</span>
                                 </div>
                             </div>
 

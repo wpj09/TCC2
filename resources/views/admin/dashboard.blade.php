@@ -25,28 +25,46 @@
 
             <div class="dash_content_app_box">
                 <div class="dash_content_app_box_stage">
-                    <table id="dataTable" class="nowrap hover stripe" width="100" style="width: 100% !important;">
-                        <thead>
-                        <tr>
-                            <th>Relator</th>
-                            <th>Endereço</th>
-                            <th>Setor</th>
-                            <th>Cidade</th>
-                            <th>Estado</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td><a href="#" class="text-green">Robson V. Leite</a></td>
-                            <td>Endereço</td>
-                            <td>Setor</td>
-                            <td>Cidade</td>
-                            <td>Estado</td>
-                            <td>Status</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                    <div class="realty_list">
+                        <div class="realty_list_item mt-1 mb-1">
+                            <div class="realty_list_item_actions_stats">
+                                <img
+                                    src="{{ url(asset('backend/assets/images/agua.jpg')) }}"
+                                    alt="">
+                            </div>
+
+                            <div class="realty_list_item_content">
+                                <h4>#1 - Vazamento de água</h4>
+
+                                <div class="realty_list_item_card">
+                                    <div class="realty_list_item_card_image">
+                                        <span class="icon-realty-location"></span>
+                                    </div>
+                                    <div class="realty_list_item_card_content">
+                                        <span class="realty_list_item_description_title">Status:</span>
+                                        <span class="realty_list_item_description_content">Aberto</span>
+                                    </div>
+                                </div>
+
+                                <div class="realty_list_item_card">
+                                    <div class="realty_list_item_card_image">
+                                        <span class="icon-balance-scale"></span>
+                                    </div>
+                                    <div class="realty_list_item_card_content">
+                                        <span class="realty_list_item_description_title">Entidade:</span>
+                                        <span class="realty_list_item_description_content">SANEAGO</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="realty_list_item_actions">
+                                <div>
+                                    <a href="" class="btn btn-green icon-pencil-square-o">Editar Problema</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

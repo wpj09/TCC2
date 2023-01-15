@@ -4,7 +4,7 @@
     <section class="dash_content_app">
 
         <header class="dash_content_app_header">
-            <h2 class="icon-search">Filtro</h2>
+            <h2 class="icon-user-plus">Entidades</h2>
 
             <div class="dash_content_app_header_actions">
                 <nav class="dash_content_app_breadcrumb">
@@ -33,10 +33,10 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td><a href="" class="text-green">UpInside Treinamentos LTDA</a></td>
+                        <td><a href="" class="text-green">SANEAGO</a></td>
                         <td>12.345.678/0001-00</td>
-                        <td>Rua central, lote entral</td>
-                        <td>123123</td>
+                        <td>Rua central, lote Central</td>
+                        <td>656555555</td>
                     </tr>
                     </tbody>
                 </table>

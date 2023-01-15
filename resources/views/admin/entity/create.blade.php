@@ -23,22 +23,30 @@
             <div class="dash_content_app_box_stage">
                 <form class="app_form" action="" method="post">
 
-                    <label class="label">
-                        <span class="legend">*Razão Social:</span>
-                        <input type="text" name="social_name" placeholder="Razão Social" value=""/>
-                    </label>
+                    <label class="label_g2">
+                        <label class="label">
+                            <span class="legend">*Razão Social:</span>
+                            <input type="text" name="social_name" placeholder="Razão Social" value=""/>
+                        </label>
 
-                    <div class="label_g2">
                         <label class="label">
                             <span class="legend">CNPJ:</span>
                             <input type="tel" name="CNPJ" class="mask-cnpj" placeholder="CNPJ da Entidade"
                                    value=""/>
                         </label>
+                    </label>
 
+                    <div class="label_g2">
                         <label class="label">
                             <span class="legend">Inscrição Estadual:</span>
                             <input type="text" name="IE" placeholder="Número da Inscrição"
                                    value=""/>
+                        </label>
+
+                        <label class="label">
+                            <span class="legend">Contato:</span>
+                            <input type="tel" name="telephone" class="mask-phone"
+                                   placeholder="Número do Telefonce com DDD" value="{{ old('telephone') }}"/>
                         </label>
                     </div>
 
@@ -96,7 +104,8 @@
                     </div>
 
                     <div class="text-right">
-                        <button class="btn btn-large btn-green icon-check-square-o" type="submit">Criar Entidade</button>
+                        <button class="btn btn-large btn-green icon-check-square-o" type="submit">Criar Entidade
+                        </button>
                     </div>
                 </form>
             </div>

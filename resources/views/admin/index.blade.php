@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ url(mix('backend/assets/css/reset.css')) }}"/>
     <link rel="stylesheet" href="{{ url(mix('backend/assets/css/boot.css')) }}"/>
     <link rel="stylesheet" href="{{ url(mix('backend/assets/css/login.css')) }}"/>
-    <link rel="icon" type="image/png" href="backend/assets/images/favicon.png"/>
+    <link rel="icon" type="image/png" href="{{ url(asset('backend/assets/images/favicon.png')) }}"/>
 
     <title>{{ env('name_municipio') }} - Site Control</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -41,8 +41,8 @@
             </form>
 
             <footer>
-                <p>Desenvolvido por <a href="https://www.upinside.com.br">www.<b>upinside</b>.com.br</a></p>
-                <p>&copy; <?= date("Y"); ?> - Todos os Direitos Reservados</p>
+                <p>Desenvolvido por <a href="https://www.instagram.com/wpj009/" target="_blank"><b>Willian Pereira</b></a></p>
+                <p>&copy; 2022 - <?= date("Y"); ?> - Todos os Direitos Reservados</p>
                 <p class="dash_login_left_box_support">
                     <a target="_blank"
                        class="icon-whatsapp transition text-green"
