@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\EntityController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
 
         Route::get('users/team', [UserController::class, 'team'])->name('users.team');
         Route::resource('users', 'UserController');
+
+        Route::resource('entities', 'EntityController');
     });
 
     /** Logout*/

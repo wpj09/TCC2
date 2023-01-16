@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\User as UserRequest;
-use App\Models\User;
+use App\Models\Entity;
 use Illuminate\Http\Request;
+use App\Http\Requests\Admin\Entity as EntityRequest;
 
-class UserController extends Controller
+class EntityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,22 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('admin.users.index', [
-            'users' => $users
-        ]);
-    }
+        $entities = Entity::all();
 
-    public function team()
-    {
-        $users = User::where(function ($query) {
-            $query->where('purpose', 'admin')
-                ->where('purpose', 'collaborate')
-                ->orWhere('status', 1);
-        })->get();
-
-        return view('admin.users.team', [
-            'users' => $users
+        return view('admin.entities.index', [
+            'entities' => $entities
         ]);
     }
 
@@ -42,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        return view('admin.entities.create');
     }
 
     /**
@@ -51,20 +39,19 @@ class UserController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UserRequest $request)
+    public function store(EntityRequest $request)
     {
-        $userCreate = User::create($request->all());
-        $userCreate->save();
+        $entityCreate = Entity::create($request->all());
 
-        return redirect()->route('admin.users.edit', [
-            'users' => $userCreate->id
+        return redirect()->route('admin.entities.edit', [
+            'entities' => $entityCreate->id
         ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param \App\Models\Entity $entity
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -80,10 +67,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = User::where('id', $id)->first();
+        $entity = Entity::where('id', $id)->first();
 
-        return view('admin.users.edit', [
-            'user' => $user
+        return view('admin.entities.edit', [
+            'entity' => $entity
         ]);
     }
 
@@ -94,17 +81,14 @@ class UserController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(EntityRequest $request, $id)
     {
-        $user = User::where('id', $id)->first();
-        $user->fill($request->all());
+        $entity = Entity::where('id', $id)->first();
+        $entity->fill($request->all());
+        $entity->save();
 
-        if (!$user->save()) {
-            return redirect()->back()->withInput()->withErrors();
-        }
-
-        return redirect()->route('admin.users.edit', [
-            'user' => $user->id
+        return redirect()->route('admin.entities.edit', [
+            'entity' => $entity->id
         ]);
     }
 

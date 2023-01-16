@@ -32,10 +32,11 @@
 <div class="dash">
     <aside class="dash_sidebar">
         <article class="dash_sidebar_user">
-            <img class="dash_sidebar_user_thumb" src="{{ url(asset('backend/assets/images/avatar.jpg')) }}" alt="" title=""/>
+            <img class="dash_sidebar_user_thumb" src="{{ url(asset('backend/assets/images/avatar.jpg')) }}" alt=""
+                 title=""/>
 
             <h1 class="dash_sidebar_user_name">
-                <a href="">Willian Pereira</a>
+                <a href="{{ route('admin.users.edit', ['user' => \Illuminate\Support\Facades\Auth::user()->id]) }}">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
             </h1>
         </article>
 
@@ -54,11 +55,13 @@
                             Novo</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item">
-                <a class="icon-balance-scale" href="dashboard.php?app=properties/index">Entidade</a>
+            <li class="dash_sidebar_nav_item {{ isActive('admin.entities') }}">
+                <a class="icon-balance-scale" href="{{ route('admin.entities.index') }}">Entidade</a>
                 <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=users/index">Ver Todos</a></li>
-                    <li class=""><a href="dashboard.php?app=users/create">Criar Novo</a></li>
+                    <li class="{{ isActive('admin.entities.index') }}"><a href="{{ route('admin.entities.index') }}">Ver
+                            Todos</a></li>
+                    <li class="{{ isActive('admin.entities.create') }}"><a href="{{ route('admin.entities.create') }}">Criar
+                            Novo</a></li>
                 </ul>
             </li>
             <li class="dash_sidebar_nav_item">

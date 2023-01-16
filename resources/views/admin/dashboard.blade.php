@@ -11,7 +11,7 @@
                 <section class="app_dash_home_stats">
                     <article class="control radius">
                         <h4 class="icon-bug">Problemas</h4>
-                        <p><b>Em andamento:</b> 100</p>
+                        <p><b>Não Solucionados:</b> 100</p>
                         <p><b>Resolvidos:</b> 100</p>
                     </article>
                 </section>

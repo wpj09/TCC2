@@ -45,11 +45,13 @@
                             <div class="label_gc">
                                 <span class="legend">Perfil:</span>
                                 <label class="label">
-                                    <input type="radio" name="purpose" value="admin" {{ (old('purpose') == 'admin' ? 'checked' : '') }}><span>Administrativo</span>
+                                    <input type="radio" name="purpose"
+                                           value="admin" {{ (old('purpose') == 'admin' ? 'checked' : '') }}><span>Administrativo</span>
                                 </label>
 
                                 <label class="label">
-                                    <input type="radio" name="purpose" value="collaborate" {{ (old('purpose') == 'collaborate' ? 'checked' : '') }}><span>Colaborador</span>
+                                    <input type="radio" name="purpose"
+                                           value="collaborate" {{ (old('purpose') == 'collaborate' ? 'checked' : '') }}><span>Colaborador</span>
                                 </label>
                             </div>
 
@@ -63,9 +65,14 @@
                                     <span class="legend">*Genero:</span>
                                     <select name="genre">
                                         <option>Escolha...</option>
-                                        <option value="male" {{ (old('genre') == 'male' ? 'selected' : '') }}>Masculino</option>
-                                        <option value="female" {{ (old('genre') == 'female' ? 'selected' : '') }}>Feminino</option>
-                                        <option value="other" {{ (old('genre') == 'other' ? 'selected' : '') }}>Outros</option>
+                                        <option value="male" {{ (old('genre') == 'male' ? 'selected' : '') }}>
+                                            Masculino
+                                        </option>
+                                        <option value="female" {{ (old('genre') == 'female' ? 'selected' : '') }}>
+                                            Feminino
+                                        </option>
+                                        <option value="other" {{ (old('genre') == 'other' ? 'selected' : '') }}>Outros
+                                        </option>
                                     </select>
                                 </label>
 
@@ -109,11 +116,26 @@
                                     <span class="legend">*Estado Civil:</span>
                                     <select name="civil_status">
                                         <option>Escolha...</option>
-                                        <option value="married" {{ (old('civil_status') == 'married' ? 'selected' : '') }}>Casado</option>
-                                        <option value="separated" {{ (old('civil_status') == 'separated' ? 'selected' : '') }}>Separado</option>
-                                        <option value="single" {{ (old('civil_status') == 'single' ? 'selected' : '') }}>Solteiro</option>
-                                        <option value="divorced" {{ (old('civil_status') == 'divorced' ? 'selected' : '') }}>Divorciado</option>
-                                        <option value="widower" {{ (old('civil_status') == 'widower' ? 'selected' : '') }}>Viúvo</option>
+                                        <option
+                                            value="married" {{ (old('civil_status') == 'married' ? 'selected' : '') }}>
+                                            Casado
+                                        </option>
+                                        <option
+                                            value="separated" {{ (old('civil_status') == 'separated' ? 'selected' : '') }}>
+                                            Separado
+                                        </option>
+                                        <option
+                                            value="single" {{ (old('civil_status') == 'single' ? 'selected' : '') }}>
+                                            Solteiro
+                                        </option>
+                                        <option
+                                            value="divorced" {{ (old('civil_status') == 'divorced' ? 'selected' : '') }}>
+                                            Divorciado
+                                        </option>
+                                        <option
+                                            value="widower" {{ (old('civil_status') == 'widower' ? 'selected' : '') }}>
+                                            Viúvo
+                                        </option>
                                     </select>
                                 </label>
                             </div>
@@ -136,7 +158,7 @@
                                     <label class="label">
                                         <span class="legend">*Endereço:</span>
                                         <input type="text" name="street" class="street"
-                                               placeholder="Endereço Completo" value="{{ old('street') }}"/>
+                                               placeholder="Ex. Rua XX ou AV XX" value="{{ old('street') }}"/>
                                     </label>
 
                                     <div class="label_g2">
@@ -148,7 +170,8 @@
 
                                         <label class="label">
                                             <span class="legend">Complemento:</span>
-                                            <input type="text" name="complement" placeholder="Completo ex.: Qaudra XX, Lote XX"
+                                            <input type="text" name="complement"
+                                                   placeholder="Complemento ex.: Quadra XX, Lote XX"
                                                    value="{{ old('complement') }}"/>
                                         </label>
                                     </div>

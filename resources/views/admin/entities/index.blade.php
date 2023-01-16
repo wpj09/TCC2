@@ -9,13 +9,13 @@
             <div class="dash_content_app_header_actions">
                 <nav class="dash_content_app_breadcrumb">
                     <ul>
-                        <li><a href="">Dashboard</a></li>
+                        <li><a href="{{ route('admin.home') }}">Dashboard</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="" class="text-green">Entidades</a></li>
+                        <li><a href="{{ route('admin.entities.index') }}" class="text-green">Entidades</a></li>
                     </ul>
                 </nav>
 
-                <a href="dashboard.php?app=companies/create" class="btn btn-green icon-building-o ml-1">Criar
+                <a href="{{ route('admin.entities.create') }}" class="btn btn-green icon-building-o ml-1">Criar
                     Entidade</a>
             </div>
         </header>
@@ -32,12 +32,14 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><a href="" class="text-green">SANEAGO</a></td>
-                        <td>12.345.678/0001-00</td>
-                        <td>Rua central, lote Central</td>
-                        <td>656555555</td>
-                    </tr>
+                    @foreach($entities as $entity)
+                        <tr>
+                            <td><a href="{{ route('admin.entities.edit', ['entity' => $entity->id]) }}" class="text-green">{{ $entity->social_name }}</a></td>
+                            <td>{{ $entity->document_entity }}</td>
+                            <td>{{ $entity->street }}, {{ $entity->complement }}</td>
+                            <td>{{ $entity->document_entity_secondary }}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

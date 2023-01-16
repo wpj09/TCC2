@@ -30,6 +30,7 @@ class AlterUserTable extends Migration
             $table->string('city')->nullable();
             $table->string('cell')->nullable();
             $table->string('purpose')->nullable();
+            $table->boolean('status')->default(0);
         });
     }
 
@@ -55,8 +56,9 @@ class AlterUserTable extends Migration
             $table->dropColumn('neighborhood');
             $table->dropColumn('state');
             $table->dropColumn('city');
-//            $table->dropColumn('cell');
+            $table->dropColumn('cell');
             $table->dropColumn('purpose');
+            $table->dropColumn('status');
         });
     }
 }

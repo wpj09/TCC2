@@ -221,7 +221,9 @@ return [
         'social_name' => 'razão social',
         'alias_name' => 'nome fantasia',
         'document_company' => 'CNPJ',
+        'document_entity' => 'CNPJ',
         'document_company_secondary' => 'inscrição estadual',
+        'document_entity_secondary' => 'inscrição estadual',
 
         //Contracts
         'owner' => 'proprietário',

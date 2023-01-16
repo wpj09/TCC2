@@ -9,44 +9,57 @@
             <div class="dash_content_app_header_actions">
                 <nav class="dash_content_app_breadcrumb">
                     <ul>
-                        <li><a href="">Dashboard</a></li>
+                        <li><a href="{{ route('admin.home') }}">Dashboard</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="">Entidades</a></li>
+                        <li><a href="{{ route('admin.entities.index') }}">Entidades</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="" class="text-green">Nova Entidade</a></li>
+                        <li><a href="{{ route('admin.entities.create') }}" class="text-green">Nova Entidade</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
         <div class="dash_content_app_box">
+            @if($errors->all())
+                @foreach($errors->all() as $error)
+                    <div class="message message-red">
+                        <p class="icon-asterisk"> {{ $error }}</p>
+                    </div>
+                @endforeach
+            @endif
             <div class="dash_content_app_box_stage">
-                <form class="app_form" action="" method="post">
+                <form class="app_form" action="{{ route('admin.entities.update', ['entity' => $entity->id]) }}"
+                      method="post">
+                    @csrf
+                    @method('PUT')
+                    <input type="hidden" name="id" value="{{ $entity->id }}">
 
                     <label class="label_g2">
                         <label class="label">
                             <span class="legend">*Razão Social:</span>
-                            <input type="text" name="social_name" placeholder="Razão Social" value=""/>
+                            <input type="text" name="social_name" placeholder="Razão Social"
+                                   value="{{ old('social_name') ?? $entity->social_name }}"/>
                         </label>
 
                         <label class="label">
                             <span class="legend">CNPJ:</span>
-                            <input type="tel" name="CNPJ" class="mask-cnpj" placeholder="CNPJ da Entidade"
-                                   value=""/>
+                            <input type="tel" name="document_entity" class="mask-cnpj" placeholder="CNPJ da Entidade"
+                                   value="{{ old('document_entity') ?? $entity->document_entity }}"/>
                         </label>
                     </label>
 
                     <div class="label_g2">
                         <label class="label">
                             <span class="legend">Inscrição Estadual:</span>
-                            <input type="text" name="IE" placeholder="Número da Inscrição"
-                                   value=""/>
+                            <input type="text" name="document_entity_secondary" placeholder="Número da Inscrição"
+                                   value="{{ old('document_entity_secondary') ?? $entity->document_entity_secondary }}"/>
                         </label>
 
                         <label class="label">
                             <span class="legend">Contato:</span>
                             <input type="tel" name="telephone" class="mask-phone"
-                                   placeholder="Número do Telefonce com DDD" value="{{ old('telephone') }}"/>
+                                   placeholder="Número do Telefonce com DDD"
+                                   value="{{ old('telephone') ?? $entity->telephone }}"/>
                         </label>
                     </div>
 
@@ -60,51 +73,57 @@
                             <div class="label_g2">
                                 <label class="label">
                                     <span class="legend">*CEP:</span>
-                                    <input type="tel" name="CEP" class="mask-zipcode zip_code_search"
-                                           placeholder="Digite o CEP" value=""/>
+                                    <input type="tel" name="zipcode" class="mask-zipcode zip_code_search"
+                                           placeholder="Digite o CEP" value="{{ old('zipcode') ?? $entity->zipcode }}"/>
                                 </label>
                             </div>
 
                             <label class="label">
                                 <span class="legend">*Endereço:</span>
-                                <input type="text" name="street" class="endereco" placeholder="Endereço Completo"
-                                       value=""/>
+                                <input type="text" name="street" class="street"
+                                       placeholder="Ex. Rua XX ou AV XX"
+                                       value="{{ old('street') ?? $entity->street }}"/>
                             </label>
 
                             <div class="label_g2">
                                 <label class="label">
                                     <span class="legend">*Número:</span>
-                                    <input type="text" name="numero" placeholder="Número do Endereço" value=""/>
+                                    <input type="text" name="number" placeholder="Número do Endereço"
+                                           value="{{ old('number') ?? $entity->number }}"/>
                                 </label>
 
                                 <label class="label">
                                     <span class="legend">Complemento:</span>
-                                    <input type="text" name="complemento" placeholder="Completo" value=""/>
+                                    <input type="text" name="complement"
+                                           placeholder="Exemplo: Quadra XX, Lote XX"
+                                           value="{{ old('complement') ?? $entity->complement }}"/>
                                 </label>
                             </div>
 
                             <label class="label">
                                 <span class="legend">*Bairro:</span>
-                                <input type="text" name="bairro" class="neighborhood" placeholder="Bairro"
-                                       value=""/>
+                                <input type="text" name="neighborhood" class="neighborhood" placeholder="Bairro"
+                                       value="{{ old('neighborhood') ?? $entity->neighborhood }}"/>
                             </label>
 
                             <div class="label_g2">
                                 <label class="label">
                                     <span class="legend">*Estado:</span>
-                                    <input type="text" name="estado" class="state" placeholder="Estado" value=""/>
+                                    <input type="text" name="state" class="state" placeholder="Estado"
+                                           value="{{ old('state') ?? $entity->state }}"/>
                                 </label>
 
                                 <label class="label">
                                     <span class="legend">*Cidade:</span>
-                                    <input type="text" name="cidade" class="city" placeholder="Cidade" value=""/>
+                                    <input type="text" name="city" class="city" placeholder="Cidade"
+                                           value="{{ old('city') ?? $entity->city }}"/>
                                 </label>
                             </div>
                         </div>
                     </div>
 
                     <div class="text-right">
-                        <button class="btn btn-large btn-green icon-check-square-o" type="submit">Criar Entidade
+                        <button class="btn btn-large btn-green icon-check-square-o" type="submit">Editar Entidade
                         </button>
                     </div>
                 </form>
