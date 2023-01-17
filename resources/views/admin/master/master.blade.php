@@ -64,10 +64,10 @@
                             Novo</a></li>
                 </ul>
             </li>
-            <li class="dash_sidebar_nav_item">
-                <a class="icon-bug" href="dashboard.php?app=contracts/index">Problemas</a>
+            <li class="dash_sidebar_nav_item {{ isActive('admin.problem') }}">
+                <a class="icon-bug" href="{{ route('admin.problem.index') }}">Problemas</a>
                 <ul class="dash_sidebar_nav_submenu">
-                    <li class=""><a href="dashboard.php?app=contracts/index">Ver Todos</a></li>
+                    <li class="{{ isActive('admin.problem.index') }}"><a href="{{ route('admin.problem.index') }}">Ver Todos</a></li>
                 </ul>
             </li>
             <li class="dash_sidebar_nav_item">
@@ -84,7 +84,7 @@
                 <div class="dash_userbar_box_content">
                     <span class="icon-align-justify icon-notext mobile_menu transition btn btn-blue"></span>
                     <h1 class="transition">
-                        <i class="icon-clipboard text-green"></i><a href="">{{ env('name_municipio') }}<b>Admin</b></a>
+                        <i class="icon-clipboard text-green"></i>{{ env('name_municipio') }}<b>Admin</b>
                     </h1>
                     <div class="dash_userbar_box_bar no_mobile">
                         <a class="text-red icon-sign-out" href="{{ route('admin.logout') }}">Sair</a>

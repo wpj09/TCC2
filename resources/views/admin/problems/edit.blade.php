@@ -9,9 +9,9 @@
             <div class="dash_content_app_header_actions">
                 <nav class="dash_content_app_breadcrumb">
                     <ul>
-                        <li><a href="">Dashboard</a></li>
+                        <li><a href="{{ route('admin.home') }}">Dashboard</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="" class="text-green">Problemas</a></li>
+                        <li><a href="{{ route('admin.problem.index') }}" class="text-green">Problemas</a></li>
                     </ul>
                 </nav>
             </div>
@@ -30,36 +30,54 @@
                     </li>
                 </ul>
 
-                <form action="" method="post" class="app_form" enctype="multipart/form-data">
+                <form action="{{ route('admin.problem.update', ['id' => $problem['id']]) }}" method="post"
+                      class="app_form" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
 
+                    <input type="hidden" id="lat" value="{{ $problem['latitude'] }}">
+                    <input type="hidden" id="lng" value="{{ $problem['longitude'] }}">
                     <div class="nav_tabs_content">
                         <div id="data">
+                            <h2>Titulo do Problema: {{ $problem['title'] }}</h2>
                             <label class="label">
-                                <span class="legend">*Titulo do Problema:</span>
-                                <input type="text" value=""/>
-                            </label>
-
-                            <label class="label">
-                                <span class="legend">Descrição do Problema:</span>
-                                <textarea name="" id="" cols="60" rows="5"></textarea>
+                                <h3>Descrição do Problema: {{ $problem['description'] }}</h3>
                             </label>
 
                             <div class="label_g2">
-
                                 <label class="label">
-                                    <span class="legend">Inscrição Estadual:</span>
-                                    <input type="text" name="IE" placeholder="Número da Inscrição"
-                                           value=""/>
+                                    <span class="legend">*Entidade Competente:</span>
+                                    <select name="entity">
+                                        <option value="">Selecione uma entidade competente</option>
+                                        @foreach($entities as $entity)
+                                            <option value="{{ $entity->social_name }}">{{ $entity->social_name }} ({{ $entity->document_entity }})</option>
+                                        @endforeach
+                                    </select>
                                 </label>
 
                                 <label class="label">
                                     <span class="legend">*Status do Poblema:</span>
                                     <select name="status">
-                                        <option value="on">Aberto</option>
-                                        <option value="off">Resolvido</option>
+                                        <option
+                                            value="open"{{ (old('status') == 'open' ? 'selected' : ($problem['status'] == 'open' ? 'selected' : '')) }}>
+                                            Aberto
+                                        </option>
+                                        <option
+                                            value="closed" {{ (old('status') == 'closed' ? 'selected' : ($problem['status'] == 'closed' ? 'selected' : '')) }}>
+                                            Resolvido
+                                        </option>
                                     </select>
                                 </label>
                             </div>
+
+                            <div class="label_g2">
+                                <label class="label">
+                                    <span class="legend">*Solução do problema:</span>
+                                    <input type="text" name="solution" id="solution"
+                                           value="{{ (old($problem['solution'] == '') ?? $problem['solution']) }}">
+                                </label>
+                            </div>
+
                             <div class="main_property_header  py-1 bg-light">
                                 <div class="col-12 col-lg-8">
                                     <div class="main_property_location">
@@ -103,64 +121,26 @@
 
 @section('js')
     <script>
-        $(function () {
 
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
+        function initMap() {
+
+            ltd = document.getElementById("lat").value;
+            lgt = document.getElementById("lng").value;
+
+            const myLatLng = {lat: +ltd, lng: +lgt};
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 16,
+                center: myLatLng,
+                mapTypeId: 'terrain'
             });
 
-            $('input[name="files[]"]').change(function (files) {
-
-                $('.content_image').text('');
-
-                $.each(files.target.files, function (key, value) {
-                    var reader = new FileReader();
-                    reader.onload = function (value) {
-                        $('.content_image').append(
-                            '<div class="property_image_item">' +
-                            '<div class="embed radius" ' +
-                            'style="background-image: url(' + value.target.result + '); background-size: cover; background-position: center center;">' +
-                            '</div>' +
-                            '</div>');
-                    };
-                    reader.readAsDataURL(value);
-                });
+            new google.maps.Marker({
+                position: myLatLng,
+                map
             });
+        }
 
-            $('.image-set-cover').click(function (event) {
-                event.preventDefault();
-
-                var button = $(this);
-
-                $.post(button.data('action'), {}, function (response) {
-                    if (response.success === true) {
-                        $('.property_image').find('a.btn-green').removeClass('btn-green');
-                        button.addClass('btn-green');
-                    }
-                }, 'json');
-            });
-
-            $('.image-remove').click(function (event) {
-                event.preventDefault();
-
-                var button = $(this);
-
-                $.ajax({
-                    url: button.data('action'),
-                    type: 'DELETE',
-                    dataType: 'json',
-                    success: function (response) {
-
-                        if (response.success === true) {
-                            button.closest('.property_image_item').fadeOut(function () {
-                                $(this).remove();
-                            });
-                        }
-                    }
-                })
-            });
-        });
     </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR6P9EfO4d0TnM4XorVr8W1VrgXMSzz_k&callback=initMap"></script>
 @endsection

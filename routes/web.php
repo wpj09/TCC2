@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\EntityController;
+use App\Http\Controllers\Admin\ProblemController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
 
         /** Entidades */
         Route::resource('entities', 'EntityController');
+
+        /** Probelmas */
+        Route::get('/problem', [ProblemController::class, 'index'])->name('problem.index');
+        Route::get('/problem/{id}/edit', [ProblemController::class, 'edit'])->name('problem.edit');
+        Route::put('/problem/{id}', [ProblemController::class, 'update'])->name('problem.update');
     });
 
     /** Logout*/
