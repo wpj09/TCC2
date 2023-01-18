@@ -22,19 +22,19 @@
                 <div class="dash_content_app_box_stage">
                     <div class="realty_list">
                         <div class="realty_list_item mt-1 mb-1">
-{{--                            @foreach($problem['Image'] as $image)--}}
-{{--                                @if(!empty($image))--}}
-{{--                                    <div class="realty_list_item_actions_stats">--}}
-{{--                                        <img src="{{ $image['path'] }}" alt="">--}}
-{{--                                    </div>--}}
-{{--                                @else--}}
-{{--                                    <div class="realty_list_item_actions_stats">--}}
-{{--                                        <img--}}
-{{--                                            src="{{ url(asset('backend/assets/images/img.png')) }}"--}}
-{{--                                            alt="">--}}
-{{--                                    </div>--}}
-{{--                                @endif--}}
-{{--                            @endforeach--}}
+                            @foreach($problem['Image'] as $image)
+                                @if(!empty($image))
+                                    <div class="realty_list_item_actions_stats">
+                                        <img src="{{ $image['path'] }}" alt="">
+                                    </div>
+                                @else
+                                    <div class="realty_list_item_actions_stats">
+                                        <img
+                                            src="{{ url(asset('backend/assets/images/img.png')) }}"
+                                            alt="">
+                                    </div>
+                                @endif
+                            @endforeach
 
                             <div class="realty_list_item_content">
                                 <h4>{{ $problem['id'] }} - {{ $problem['title'] }}</h4>

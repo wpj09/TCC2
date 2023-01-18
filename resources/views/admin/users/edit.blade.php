@@ -4,16 +4,16 @@
     <section class="dash_content_app">
 
         <header class="dash_content_app_header">
-            <h2 class="icon-user-plus">Editar Cliente</h2>
+            <h2 class="icon-user-plus">Editar Usuário</h2>
 
             <div class="dash_content_app_header_actions">
                 <nav class="dash_content_app_breadcrumb">
                     <ul>
                         <li><a href="{{ route('admin.home') }}">Dashboard</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="{{ route('admin.users.index') }}">Clientes</a></li>
+                        <li><a href="{{ route('admin.users.index') }}">Usuários</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="{{ route('admin.users.create') }}" class="text-green">Novo Cliente</a></li>
+                        <li><a href="{{ route('admin.users.create') }}" class="text-green">Novo Usuário</a></li>
                     </ul>
                 </nav>
             </div>
@@ -85,7 +85,7 @@
 
                                 <label class="label">
                                     <span class="legend">*CPF:</span>
-                                    <input type="tel" class="mask-doc" name="document" placeholder="CPF do Cliente"
+                                    <input type="tel" class="mask-doc" name="document" placeholder="CPF do Usuário"
                                            value="{{ old('document') ?? $user->document }}"/>
                                 </label>
                             </div>
@@ -93,7 +93,7 @@
                             <div class="label_g2">
                                 <label class="label">
                                     <span class="legend">*RG:</span>
-                                    <input type="text" name="document_secondary" placeholder="RG do Cliente"
+                                    <input type="text" name="document_secondary" placeholder="RG do Usuário"
                                            value="{{ old('document_secondary') ?? $user->document_secondary }}"/>
                                 </label>
 

@@ -45,7 +45,7 @@
                 <a class="icon-tachometer" href="{{ route('admin.home') }}">Dashboard</a>
             </li>
             <li class="dash_sidebar_nav_item {{ isActive('admin.users') }}">
-                <a class="icon-users" href="{{ route('admin.users.index') }}">Clientes</a>
+                <a class="icon-users" href="{{ route('admin.users.index') }}">Usuários</a>
                 <ul class="dash_sidebar_nav_submenu">
                     <li class="{{ isActive('admin.users.index') }}"><a href="{{ route('admin.users.index') }}">Ver
                             Todos</a></li>

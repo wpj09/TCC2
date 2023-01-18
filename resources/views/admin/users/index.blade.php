@@ -11,11 +11,11 @@
                     <ul>
                         <li><a href="{{ route('admin.home') }}">Dashboard</a></li>
                         <li class="separator icon-angle-right icon-notext"></li>
-                        <li><a href="{{ route('admin.users.index') }}" class="text-green">Clientes</a></li>
+                        <li><a href="{{ route('admin.users.index') }}" class="text-green">Usuários</a></li>
                     </ul>
                 </nav>
 
-                <a href="{{ route('admin.users.create') }}" class="btn btn-green icon-user ml-1">Criar Cliente</a>
+                <a href="{{ route('admin.users.create') }}" class="btn btn-green icon-user ml-1">Criar Usuário</a>
             </div>
         </header>
 
