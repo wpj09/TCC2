@@ -82,9 +82,13 @@ class ProblemController extends Controller
     public function update(Request $request, $id)
     {
         $status = $request->status;
+        $solution = $request->solution;
+        $entity = $request->entity;
 
-        $problem = Http::withToken(env('token_api'))->put(env('url_api_id') . $id, [
-            'status' => $status
+        Http::withToken(env('token_api'))->put(env('url_api_id') . $id, [
+            'status' => $status,
+            'solution' => $solution,
+            'entity' => $entity
         ]);
 
         return redirect()->back();

@@ -50,7 +50,8 @@
                                     <select name="entity">
                                         <option value="">Selecione uma entidade competente</option>
                                         @foreach($entities as $entity)
-                                            <option value="{{ $entity->social_name }}">{{ $entity->social_name }} ({{ $entity->document_entity }})</option>
+                                            <option
+                                                value="{{ $entity->social_name }}" {{ ($entity->social_name === $problem['entity'] ? 'selected' : '') }}>{{ $entity->social_name }}</option>
                                         @endforeach
                                     </select>
                                 </label>
@@ -94,17 +95,15 @@
                             <div class="content_image"></div>
 
                             <div class="property_image">
-                                <div class="property_image_item">
-                                    <img src="" alt="">
-                                    <div class="property_image_actions">
-                                        <a href="javascript:void(0)"
-                                           class="btn btn-small icon-check icon-notext image-set-cover"
-                                           data-action=""></a>
-                                        <a href="javascript:void(0)"
-                                           class="btn btn-red btn-small icon-times icon-notext image-remove"
-                                           data-action=""></a>
+                                @foreach($problem['Image'] as $image)
+                                    <div class="property_image_item">
+                                    @if(!empty($image))
+                                            <img src="{{ $image['path'] }}" alt="">
+                                        @else
+                                            <img src="{{ url(asset('backend/assets/images/img.png')) }}" alt="">
+                                        @endif
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -140,7 +139,25 @@
             });
         }
 
+        $('input[name="files[]"]').change(function (files) {
+
+            $('.content_image').text('');
+
+            $.each(files.target.files, function (key, value) {
+                var reader = new FileReader();
+                reader.onload = function (value) {
+                    $('.content_image').append(
+                        '<div class="property_image_item">' +
+                        '<div class="embed radius" ' +
+                        'style="background-image: url(' + value.target.result + '); background-size: cover; background-position: center center;">' +
+                        '</div>' +
+                        '</div>');
+                };
+                reader.readAsDataURL(value);
+            });
+        });
+
     </script>
     <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCR6P9EfO4d0TnM4XorVr8W1VrgXMSzz_k&callback=initMap"></script>
+            src="https://maps.googleapis.com/maps/api/js?key={{ env('token_maps') }}&callback=initMap"></script>
 @endsection

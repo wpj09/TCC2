@@ -11,8 +11,14 @@
                 <section class="app_dash_home_stats">
                     <article class="control radius">
                         <h4 class="icon-bug">Problemas</h4>
-                        <p><b>Não Solucionados:</b> 100</p>
-                        <p><b>Resolvidos:</b> 100</p>
+                        <p><b>Não Solucionados:</b>
+                            @if(isset($count['open']))
+                                {{ $count['open'] }}
+                            @else
+                                0
+                            @endif
+                        </p>
+                        <p><b>Resolvidos:</b> {{ $count['closed'] }}</p>
                     </article>
                 </section>
             </div>
@@ -43,7 +49,8 @@
                                         </div>
                                         <div class="realty_list_item_card_content">
                                             <span class="realty_list_item_description_title">Status:</span>
-                                            <span class="realty_list_item_description_content">{{ $problem['status'] }}</span>
+                                            <span
+                                                class="realty_list_item_description_content">{{ $problem['status'] }}</span>
                                         </div>
                                     </div>
 
@@ -53,7 +60,8 @@
                                         </div>
                                         <div class="realty_list_item_card_content">
                                             <span class="realty_list_item_description_title">Entidade:</span>
-                                            <span class="realty_list_item_description_content">{{ $problem['entity'] }}</span>
+                                            <span
+                                                class="realty_list_item_description_content">{{ $problem['entity'] }}</span>
                                         </div>
                                     </div>
 

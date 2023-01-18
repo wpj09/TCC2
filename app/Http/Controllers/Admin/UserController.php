@@ -57,7 +57,7 @@ class UserController extends Controller
         $userCreate->save();
 
         return redirect()->route('admin.users.edit', [
-            'users' => $userCreate->id
+            'user' => $userCreate->id
         ]);
     }
 

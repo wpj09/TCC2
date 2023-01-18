@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
 {
@@ -20,7 +21,15 @@ class AuthController extends Controller
 
     public function home()
     {
-        return view('admin.dashboard');
+        $problems = Http::get(env('url_api'))->json();
+
+        $status = array_column($problems, 'status');
+        $count = array_count_values($status);
+
+        return view('admin.dashboard', [
+            'problems' => $problems,
+            'count' => $count
+        ]);
     }
 
     public function login(Request $request)
@@ -45,6 +54,12 @@ class AuthController extends Controller
             return response()->json($json);
         }
 
+        if (!$this->isAdmin()) {
+            Auth::logout();
+            $json['message'] = $this->message->error('Ooops, usuário não tem permissão para acessar essa area!')->render();
+            return response()->json($json);
+        }
+
         $this->authenticated($request->getClientIp());
         $json['redirect'] = route('admin.home');
         return response()->json($json);
@@ -54,6 +69,17 @@ class AuthController extends Controller
     {
         Auth::logout();
         return redirect()->route('admin.login');
+    }
+
+    private function isAdmin()
+    {
+        $user = User::where('id', Auth::user()->id)->first();
+
+        if ($user->status === 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private function authenticated(string $ip)

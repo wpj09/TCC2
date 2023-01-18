@@ -44,7 +44,7 @@ class EntityController extends Controller
         $entityCreate = Entity::create($request->all());
 
         return redirect()->route('admin.entities.edit', [
-            'entities' => $entityCreate->id
+            'entity' => $entityCreate->id
         ]);
     }
 
@@ -85,7 +85,10 @@ class EntityController extends Controller
     {
         $entity = Entity::where('id', $id)->first();
         $entity->fill($request->all());
-        $entity->save();
+
+        if (!$entity->save()) {
+            return redirect()->back()->withInput()->withErrors();
+        }
 
         return redirect()->route('admin.entities.edit', [
             'entity' => $entity->id
