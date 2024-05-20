@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin\ACL;
 
 use App\Http\Controllers\Controller;
-use App\Models\Entity;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\Entity as EntityRequest;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Exceptions\UnauthorizedException;
+use Spatie\Permission\Models\Permission;
 
-class EntityController extends Controller
+class PermissionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,14 +17,13 @@ class EntityController extends Controller
      */
     public function index()
     {
-        if(!Auth::user()->hasPermissionTo('Listar Entidades')){
+        if(!Auth::user()->hasPermissionTo('Listar Permissões')){
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
+        $permissions = Permission::all();
 
-        $entities = Entity::all();
-
-        return view('admin.entities.index', [
-            'entities' => $entities
+        return view('admin.permissions.index', [
+            'permissions' => $permissions
         ]);
     }
 
@@ -36,11 +34,10 @@ class EntityController extends Controller
      */
     public function create()
     {
-        if(!Auth::user()->hasPermissionTo('Cadastrar Entidade')){
+        if(!Auth::user()->hasPermissionTo('Cadastrar Permissão')){
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
-
-        return view('admin.entities.create');
+        return view('admin.permissions.create');
     }
 
     /**
@@ -49,23 +46,29 @@ class EntityController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EntityRequest $request)
+    public function store(Request $request)
     {
-        if(!Auth::user()->hasPermissionTo('Cadastrar Entidade')){
+        if(!Auth::user()->hasPermissionTo('Cadastrar Permissão')){
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
+        $messages = null;
+        $permission = Permission::where('name', $request->name)->get();
 
-        $entityCreate = Entity::create($request->all());
+        if ($permission->count() > 0) {
+            return redirect()->back()->withInput();
+        }
 
-        return redirect()->route('admin.entities.edit', [
-            'entity' => $entityCreate->id
-        ]);
+        $permission = new Permission();
+        $permission->name = $request->name;
+        $permission->save();
+
+        return redirect()->route('admin.permission.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Entity $entity
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -81,14 +84,13 @@ class EntityController extends Controller
      */
     public function edit($id)
     {
-        if(!Auth::user()->hasPermissionTo('Editar Entidade')){
+        if(!Auth::user()->hasPermissionTo('Editar Permissão')){
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
+        $permission = Permission::where('id', $id)->first();
 
-        $entity = Entity::where('id', $id)->first();
-
-        return view('admin.entities.edit', [
-            'entity' => $entity
+        return view('admin.permissions.edit', [
+            'permission' => $permission
         ]);
     }
 
@@ -99,22 +101,22 @@ class EntityController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(EntityRequest $request, $id)
+    public function update(Request $request, $id)
     {
-        if(!Auth::user()->hasPermissionTo('Editar Entidade')){
+        if(!Auth::user()->hasPermissionTo('Editar Permissão')){
             throw new UnauthorizedException('403', 'You do not have the required authorization.');
         }
+        $permission = Permission::where('name', $request->name)->where('id', '!=', $id)->get();
 
-        $entity = Entity::where('id', $id)->first();
-        $entity->fill($request->all());
-
-        if (!$entity->save()) {
-            return redirect()->back()->withInput()->withErrors();
+        if ($permission->count() > 0) {
+            return redirect()->back()->withInput();
         }
 
-        return redirect()->route('admin.entities.edit', [
-            'entity' => $entity->id
-        ]);
+        $permission = Permission::where('id', $id)->first();
+        $permission->name = $request->name;
+        $permission->save();
+
+        return redirect()->route('admin.permission.index');
     }
 
     /**

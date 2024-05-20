@@ -57,6 +57,14 @@
                                 </label>
                             </div>
 
+                            @foreach($roles as $role)
+                                <label class="label">
+                                    <input type="checkbox"
+                                           name="acl_{{ $role->id }}" {{ ($role->can == '1' ? 'checked' : '') }}>
+                                    <span>{{ $role->name }}</span>
+                                </label>
+                            @endforeach
+
                             <label class="label">
                                 <span class="legend">*Nome:</span>
                                 <input type="text" name="name" placeholder="Nome Completo"

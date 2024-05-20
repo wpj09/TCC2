@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Entity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Spatie\Permission\Exceptions\UnauthorizedException;
 
 class ProblemController extends Controller
 {
@@ -16,6 +18,10 @@ class ProblemController extends Controller
      */
     public function index()
     {
+        if(!Auth::user()->hasPermissionTo('Listar Problemas')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
+
         $problems = Http::get(env('url_api'))->json();
 
         return view('admin.problems.index', [
@@ -63,6 +69,10 @@ class ProblemController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->hasPermissionTo('Editar Problema')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
+
         $problem = Http::withToken(env('token_api'))->get(env('URL_API_ID') . $id)->json();
         $entities = Entity::orderBy('social_name')->get();
 
@@ -81,6 +91,10 @@ class ProblemController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if(!Auth::user()->hasPermissionTo('Editar Problema')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
+
         $status = $request->status;
         $solution = $request->solution;
         $entity = $request->entity;
