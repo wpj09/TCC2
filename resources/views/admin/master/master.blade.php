@@ -45,29 +45,66 @@
                 <a class="icon-tachometer" href="{{ route('admin.home') }}">Dashboard</a>
             </li>
             <li class="dash_sidebar_nav_item {{ isActive('admin.users') }}">
+                @can('Listar Usuários')
                 <a class="icon-users" href="{{ route('admin.users.index') }}">Usuários</a>
+                @endcan
                 <ul class="dash_sidebar_nav_submenu">
-                    <li class="{{ isActive('admin.users.index') }}"><a href="{{ route('admin.users.index') }}">Ver
-                            Todos</a></li>
-                    <li class="{{ isActive('admin.users.team') }}"><a href="{{ route('admin.users.team') }}">Time</a>
-                    </li>
-                    <li class="{{ isActive('admin.users.create') }}"><a href="{{ route('admin.users.create') }}">Criar
-                            Novo</a></li>
+                    @can('Listar Usuários')
+                        <li class="{{ isActive('admin.users.index') }}"><a href="{{ route('admin.users.index') }}">Ver
+                                Todos</a></li>
+                    @endcan
+                    @can('Listar Usuários - Equipe')
+                        <li class="{{ isActive('admin.users.team') }}"><a
+                                href="{{ route('admin.users.team') }}">Time</a>
+                        </li>
+                    @endcan
+                    @can('Cadastrar Usuário')
+                        <li class="{{ isActive('admin.users.create') }}"><a href="{{ route('admin.users.create') }}">Criar
+                                Novo</a></li>
+                    @endcan
                 </ul>
             </li>
             <li class="dash_sidebar_nav_item {{ isActive('admin.entities') }}">
-                <a class="icon-balance-scale" href="{{ route('admin.entities.index') }}">Entidade</a>
+                @can('Listar Entidades')
+                    <a class="icon-balance-scale" href="{{ route('admin.entities.index') }}">Entidade</a>
+                @endcan
                 <ul class="dash_sidebar_nav_submenu">
-                    <li class="{{ isActive('admin.entities.index') }}"><a href="{{ route('admin.entities.index') }}">Ver
-                            Todos</a></li>
-                    <li class="{{ isActive('admin.entities.create') }}"><a href="{{ route('admin.entities.create') }}">Criar
-                            Novo</a></li>
+                    @can('Listar Entidades')
+                        <li class="{{ isActive('admin.entities.index') }}"><a
+                                href="{{ route('admin.entities.index') }}">Ver
+                                Todos</a></li>
+                    @endcan
+                    @can('Cadastrar Entidade')
+                        <li class="{{ isActive('admin.entities.create') }}"><a
+                                href="{{ route('admin.entities.create') }}">Criar
+                                Novo</a></li>
+                    @endcan
                 </ul>
             </li>
             <li class="dash_sidebar_nav_item {{ isActive('admin.problem') }}">
-                <a class="icon-bug" href="{{ route('admin.problem.index') }}">Problemas</a>
+                @can('Listar Problemas')
+                    <a class="icon-bug" href="{{ route('admin.problem.index') }}">Problemas</a>
+                @endcan
+                @can('Listar Problemas')
+                    <ul class="dash_sidebar_nav_submenu">
+                        <li class="{{ isActive('admin.problem.index') }}"><a href="{{ route('admin.problem.index') }}">Ver
+                                Todos</a></li>
+                    </ul>
+                @endcan
+            </li>
+            <li class="dash_sidebar_nav_item {{ isActive('admin.permission') }} {{ isActive('admin.role') }}">
+                @can('Listar Perfis')
+                <a class="icon-cogs" href="{{ route('admin.role.index') }}">Configurações</a>
+                @endcan
                 <ul class="dash_sidebar_nav_submenu">
-                    <li class="{{ isActive('admin.problem.index') }}"><a href="{{ route('admin.problem.index') }}">Ver Todos</a></li>
+                    @can('Listar Perfis')
+                    <li class="{{ isActive('admin.role.index') }}"><a href="{{ route('admin.role.index') }}">Perfis</a>
+                    </li>
+                    @endcan
+                    @can('Listar Permissões')
+                    <li class="{{ isActive('admin.permission.index') }}"><a
+                            href="{{ route('admin.permission.index') }}">Permissões</a></li>
+                    @endcan
                 </ul>
             </li>
             <li class="dash_sidebar_nav_item">

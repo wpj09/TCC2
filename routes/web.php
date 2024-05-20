@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ACL\RoleController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\EntityController;
 use App\Http\Controllers\Admin\ProblemController;
@@ -30,6 +31,14 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'as' => 'admin.'], fu
         /** Usuários */
         Route::get('users/team', [UserController::class, 'team'])->name('users.team');
         Route::resource('users', 'UserController');
+
+        /** Permissões*/
+        Route::resource('permission', 'ACL\\PermissionController');
+
+        /** Perfis */
+        Route::get('role/{role}/permission', [RoleController::class, 'pemissions'])->name('role.permissions');
+        Route::put('role/{role}/permission/Sync', [RoleController::class, 'pemissionsSync'])->name('role.permissionsSync');
+        Route::resource('role', 'ACL\\RoleController');
 
         /** Entidades */
         Route::resource('entities', 'EntityController');

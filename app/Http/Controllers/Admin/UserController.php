@@ -6,6 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User as UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
+use Spatie\Permission\Exceptions\UnauthorizedException;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -16,6 +20,9 @@ class UserController extends Controller
      */
     public function index()
     {
+        if(!Auth::user()->hasPermissionTo('Listar Usuários')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
         $users = User::all();
         return view('admin.users.index', [
             'users' => $users
@@ -24,6 +31,10 @@ class UserController extends Controller
 
     public function team()
     {
+        if(!Auth::user()->hasPermissionTo('Listar Usuários - Equipe')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
+
         $users = User::where(function ($query) {
             $query->where('purpose', 'admin')
                 ->where('purpose', 'collaborate')
@@ -42,7 +53,19 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        if(!Auth::user()->hasPermissionTo('Cadastrar Usuário')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
+
+        $roles = Role::all();
+
+        foreach($roles as $role) {
+            $role->can = false;
+        }
+
+        return view('admin.users.create', [
+            'roles' => $roles
+        ]);
     }
 
     /**
@@ -53,6 +76,10 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        if(!Auth::user()->hasPermissionTo('Cadastrar Usuário')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
+
         $userCreate = User::create($request->all());
         $userCreate->save();
 
@@ -80,10 +107,24 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        if(!Auth::user()->hasPermissionTo('Editar Usuário')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
+
         $user = User::where('id', $id)->first();
+        $roles = Role::all();
+
+        foreach($roles as $role) {
+            if ($user->hasRole($role->name)){
+                $role->can = true;
+            } else {
+                $role->can = false;
+            }
+        }
 
         return view('admin.users.edit', [
-            'user' => $user
+            'user' => $user,
+            'roles' => $roles
         ]);
     }
 
@@ -96,11 +137,29 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, $id)
     {
+        if(!Auth::user()->hasPermissionTo('Editar Usuário')){
+            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+        }
+
         $user = User::where('id', $id)->first();
         $user->fill($request->all());
 
         if (!$user->save()) {
             return redirect()->back()->withInput()->withErrors();
+        }
+
+        $rolesRequest = $request->all();
+        $roles = null;
+        foreach($rolesRequest as $key => $value) {
+            if(Str::is('acl_*', $key) == true){
+                $roles[] = Role::where('id', ltrim($key, 'acl_'))->first();
+            }
+        }
+
+        if(!empty($roles)){
+            $user->syncRoles($roles);
+        } else {
+            $user->syncRoles(null);
         }
 
         return redirect()->route('admin.users.edit', [
